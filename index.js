@@ -86,12 +86,12 @@ let i = 0
             })
 
             // data is in a nice array, but node.writeFile wants me to stringify it and make it ugly
-            fs.writeFile("./data/rarity"+i+".txt", JSON.stringify(armorPieces), { flag: 'wx' }, function (err) {
+            fs.writeFile("./data/rarity"+i+".json", JSON.stringify(armorPieces), { flag: 'wx' }, function (err) {
                 if (err) throw err;
                 console.log("It's saved!");
             });
             // to read it you can parse the json and make it all better
-            let data = fs.readFileSync("./data/rarity"+i+".txt");
+            let data = fs.readFileSync("./data/rarity"+i+".json");
             data = JSON.parse(data);
             console.log(data);
 
