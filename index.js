@@ -1,4 +1,4 @@
-const PORT = 8000
+let i = 0
 
 const axios = require('axios')
 const cheerio = require('cheerio')
@@ -6,7 +6,6 @@ const express = require('express')
 const fs = require('fs');
 const app = express();
 
-let i = 0
     // go to next page every loop
     const url = "https://mhrise.kiranico.com/data/armors?view="+i
     //url 0 = rarity 1, thats why i++ is after url but before the file naming
