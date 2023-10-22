@@ -40,8 +40,8 @@ let i = 0
                 const defence = $(this).find('div').eq('0').text();
                 const fireRes = "Fire: " + resistanceRegEx($(this).find('div').eq('1').text())
                 const waterRes = "Water: " + resistanceRegEx($(this).find('div').eq('2').text())
-                const iceRes = "Ice: " + resistanceRegEx($(this).find('div').eq('3').text())
-                const lightningRes = "Lightning: " + resistanceRegEx($(this).find('div').eq('4').text())
+                const iceRes = "Ice: " + resistanceRegEx($(this).find('div').eq('4').text())
+                const lightningRes = "Lightning: " + resistanceRegEx($(this).find('div').eq('3').text())
                 const dragonRes = "Dragon: " + resistanceRegEx($(this).find('div').eq('5').text())
 
                 function resistanceRegEx(string) {
