@@ -1,4 +1,4 @@
-let i = 0
+let i = 9
 
 const axios = require('axios')
 const cheerio = require('cheerio')
@@ -49,11 +49,32 @@ const app = express();
                     return string.replace(/\s*(-?[0-999])\s*/g, "$1")
                 }
 
-                const skill1 = $(this).find('div').eq('6').text();
-                const skill2 = $(this).find('div').eq('7').text();
-                const skill3 = $(this).find('div').eq('8').text();
-                const skill4 = $(this).find('div').eq('9').text();
-                const skill5 = $(this).find('div').eq('10').text();
+
+                const skill1 = grabSkill($(this).find('div').eq('6').text());
+                const skill1Lv = grabSkillLv($(this).find('div').eq('6').text());
+
+                const skill2 = grabSkill($(this).find('div').eq('7').text());
+                const skill2Lv = grabSkillLv($(this).find('div').eq('7').text());
+
+                const skill3 = grabSkill($(this).find('div').eq('8').text());
+                const skill3Lv = grabSkillLv($(this).find('div').eq('8').text());
+
+                const skill4 = grabSkill($(this).find('div').eq('9').text());
+                const skill4Lv = grabSkillLv($(this).find('div').eq('9').text());
+
+                const skill5 = grabSkill($(this).find('div').eq('10').text());
+                const skill5Lv = grabSkillLv($(this).find('div').eq('10').text());
+
+                // Skill comes out like Weakness Exploit Lv 1
+                // these separate the skill name and value into separate varables
+                function grabSkill(string) {
+                    return string.replace(/(.*)(.Lv.[1-9])/g, "$1")
+                }
+
+                function grabSkillLv(string) {
+                    return string.replace(/(.*)(Lv.[1-9])/g, "$2")
+                }
+
 
                 const kiranicoURL = $(this).find('a').attr('href');
 
@@ -74,10 +95,15 @@ const app = express();
                     ],
                     skills: [
                         skill1,
+                        skill1Lv,
                         skill2,
+                        skill2Lv,
                         skill3,
+                        skill3Lv,
                         skill4,
-                        skill5
+                        skill4Lv,
+                        skill5,
+                        skill5Lv
                     ],
                     kiranicoURL,
                 });
@@ -92,7 +118,7 @@ const app = express();
             // to read it you can parse the json and make it all better
             let data = fs.readFileSync("./data/rarity"+i+".json");
             data = JSON.parse(data);
-            console.log(data);
+            // console.log(data);
 
         }).catch(err => console.log(err))
 
