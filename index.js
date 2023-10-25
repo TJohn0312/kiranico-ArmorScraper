@@ -1,4 +1,4 @@
-let i = 0
+let i = 9
 
 const axios = require('axios')
 const cheerio = require('cheerio')
@@ -72,7 +72,7 @@ const app = express();
                 }
 
                 function grabSkillLv(string) {
-                    return string.replace(/(.*)(Lv.[1-9])/g, "$2")
+                    return string.replace(/(.*)([1-9])/g, "$2")
                 }
 
 
